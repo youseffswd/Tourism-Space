@@ -1,0 +1,856 @@
+// Start Variables
+$mainColor: #0b0d17;
+$secondColor: #d0d6f9;
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+$letter-spacing: 2.5px;
+// End Variables
+// Start mixins
+@mixin sm {
+    @media (min-width: $sm) {
+        @content;
+    }
+}
+@mixin md {
+    @media (min-width: $md) {
+        @content;
+    }
+}
+@mixin lg {
+    @media (min-width: $lg) {
+        @content;
+    }
+}
+@mixin xl {
+    @media (min-width: $xl) {
+        @content;
+    }
+}
+
+// End mixins
+// Start Global
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Barlow Condensed", sans-serif;
+    overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Bellefair", serif;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+section {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px 0 30px;
+    @include md {
+        padding: 150px 0 30px;
+    }
+}
+// Loader
+.loader {
+    position: fixed;
+    z-index: 1000000;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 100%;
+    div {
+        width: 100%;
+        height: calc(100% / 10);
+        background-color: $mainColor;
+        transform: translateX(-100%);
+    }
+}
+// Header
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 96px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    @include lg {
+        top: 25px;
+    }
+    .logo {
+        margin-left: 35px;
+        @include xl {
+            margin-left: 90px;
+        }
+    }
+    .burger-menu {
+        width: 25px;
+        height: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+        position: absolute;
+        z-index: 10;
+        right: 35px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        @include md {
+            display: none;
+        }
+        span {
+            width: 100%;
+            height: 3px;
+            background-color: $secondColor;
+            border-radius: 20px;
+            transform-origin: right;
+            transition: 0.3s all ease-out;
+            pointer-events: none;
+        }
+        &.active {
+            span:nth-of-type(1) {
+                transform: rotate(-45deg) translateY(1.1px);
+            }
+            span:nth-of-type(2) {
+                transform: scaleX(0);
+            }
+            span:nth-of-type(3) {
+                transform: rotate(45deg) translateY(-1.1px);
+            }
+        }
+    }
+    hr {
+        display: none;
+        @include md {
+            display: block;
+            flex: 1;
+            transform: translateX(20px);
+            position: relative;
+            z-index: 10;
+            border-color: white;
+            opacity: 0.3;
+            border-width: 1px;
+        }
+    }
+    nav {
+        position: fixed;
+        z-index: 9;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 60%;
+        transform: translateX(100%);
+        transition: 0.3s all ease-out;
+        &.active {
+            transform: translateX(0%);
+        }
+        &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 0;
+            background: rgba(255, 255, 255, 0.05);
+            top: 0;
+            right: 0px;
+            backdrop-filter: blur(1.5rem);
+        }
+        @include md {
+            transform: initial;
+            height: fit-content;
+            width: fit-content;
+            position: relative;
+            transition: initial;
+            &.active {
+                transform: initial;
+            }
+        }
+        ul {
+            position: relative;
+            z-index: 1;
+            padding: 100px 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+            @include md {
+                padding: 0px 20px;
+                flex-direction: row;
+                gap: 2.5rem;
+            }
+            @include lg {
+                padding: 0 60px;
+                gap: 3.5rem;
+            }
+            @include xl {
+                padding: 0 80px;
+            }
+            li {
+                text-transform: uppercase;
+                color: #fff;
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+                letter-spacing: $letter-spacing;
+                padding: 5px 0;
+                position: relative;
+                cursor: pointer;
+                span {
+                    margin-right: 10px;
+                    font-weight: bold;
+                    width: 15px;
+                    pointer-events: none;
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: -10px;
+                    width: 100%;
+                    height: 3px;
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    background-color: #d0d6f9;
+                    border-radius: 20px;
+                    transition: 0.3s transform ease-out;
+                }
+                @include md {
+                    padding: 25px 10px;
+                    flex-direction: row;
+                    font-size: 16px;
+                    &::after {
+                        transform-origin: center;
+                        bottom: 0;
+                    }
+                    span {
+                        width: 20px;
+                    }
+                }
+                @include lg {
+                    padding: 35px 10px;
+                    font-size: 18px;
+                }
+                &:hover::after,
+                &.active::after {
+                    transform: scalex(1);
+                }
+            }
+        }
+    }
+}
+// Container
+.container {
+    width: 100%;
+    padding: 0 12px;
+    margin: 0 auto;
+    @include sm {
+        max-width: 540px;
+    }
+    @include md {
+        max-width: 720px;
+    }
+    @include lg {
+        max-width: 960px;
+    }
+    @include xl {
+        max-width: 1140px;
+    }
+}
+
+// End Global
+// Start Home
+.home {
+    background-image: url(../../images/home/background-home-mobile.jpg);
+    @include md {
+        background-image: url(../../images/home/background-home-tablet.jpg);
+    }
+    @include lg {
+        background-image: url(../../images/home/background-home-desktop.jpg);
+    }
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-direction: column;
+        height: 100%;
+        gap: 60px;
+        @include md {
+            flex-direction: row;
+            justify-content: space-between;
+            gap: initial;
+        }
+        .heading {
+            text-align: center;
+            color: $secondColor;
+            @include md {
+                text-align: left;
+            }
+            .sub-heading {
+                font-size: 20px;
+                letter-spacing: $letter-spacing;
+                @include md {
+                    font-size: 30px;
+                    letter-spacing: $letter-spacing + 2px;
+                }
+            }
+            h1 {
+                margin-top: 15px;
+                color: #fff;
+                font-size: 80px;
+                font-weight: normal;
+                letter-spacing: 5px;
+                @include md {
+                    font-size: 100px;
+                }
+                @include xl {
+                    font-size: 120px;
+                }
+            }
+            p {
+                line-height: 1.5;
+                letter-spacing: 1.5px;
+                max-width: 400px;
+                margin: 0 auto;
+                font-size: 16px;
+                @include md {
+                    font-size: 18px;
+                }
+                @include xl {
+                    max-width: 500px;
+                    line-height: 1.8;
+                    font-size: 20px;
+                }
+            }
+        }
+        .explore {
+            @include lg {
+                flex: 1;
+                text-align: right;
+                margin-right: 100px;
+            }
+            button {
+                background-color: #fff;
+                border-radius: 50%;
+                width: 225px;
+                height: 225px;
+                font-family: "Bellefair", serif;
+                cursor: pointer;
+                color: #0b0d17;
+                font-size: 32px;
+                transition: 0.6s all ease-out;
+                border: none;
+                outline: none;
+                &:hover {
+                    box-shadow: 0px 0px 0px 20px rgba($secondColor, 0.2),
+                        0px 0px 0px 40px rgba($secondColor, 0.1);
+                }
+                @include lg {
+                    width: 250px;
+                    height: 250px;
+                    &:hover {
+                        box-shadow: 0px 0px 0px 40px rgba($secondColor, 0.2),
+                            0px 0px 0px 80px rgba($secondColor, 0.1);
+                    }
+                }
+            }
+        }
+    }
+}
+// End Home
+// Start Slider
+.slider {
+    overflow: hidden;
+    .slider-heading {
+        @extend %slider-heading;
+    }
+
+    .slider-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 400%;
+        transition: 0.4s all ease-out;
+        .img {
+            width: calc(100% / 4);
+            text-align: center;
+            padding: 0 70px;
+            animation: 120s rotating linear infinite;
+            opacity: 0;
+            transition: 0.3s opacity ease-out 0.25s;
+            &.active {
+                opacity: 1;
+            }
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+}
+%slider-heading {
+    text-align: center;
+    color: white;
+    letter-spacing: $letter-spacing + 2px;
+    margin-bottom: 25px;
+    span {
+        color: $secondColor;
+        margin-right: 10px;
+    }
+    @include md {
+        text-align: left;
+        margin-bottom: 50px;
+    }
+}
+@keyframes rotating {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+// End Slider
+// Sart Information
+.information {
+    .change-content-loader {
+        position: absolute;
+        background-color: #edf7f6;
+        width: 100%;
+        height: 0%;
+        z-index: 1;
+    }
+    p.description {
+        color: #d0d6f9;
+        font-size: 16px;
+        letter-spacing: 1px;
+        line-height: 1.6;
+        max-width: 500px;
+        margin: 0 auto;
+        @include md {
+            margin: initial;
+        }
+    }
+}
+// End Information
+// Start Destination
+.destination {
+    background-image: url(../../images/destination/background-destination-mobile.jpg);
+
+    @include md {
+        background-image: url(../../images/destination/background-destination-tablet.jpg);
+    }
+    @include lg {
+        background-image: url(../../images/destination/background-destination-desktop.jpg);
+    }
+    .container {
+        @include md {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            padding: 50px 12px;
+        }
+        @include lg {
+            gap: 50px;
+        }
+        .slider {
+            @include lg {
+                width: 50%;
+            }
+        }
+        .information {
+            position: relative;
+            margin-top: 30px;
+            text-align: center;
+            @include md {
+                margin-top: 0px;
+                text-align: left;
+                min-width: 250px;
+            }
+            @include lg {
+                width: 50%;
+            }
+            .slider-controls {
+                display: flex;
+                width: fit-content;
+                gap: 20px;
+                margin: 0 auto;
+                @include lg {
+                    margin: initial;
+                }
+                li {
+                    color: $secondColor;
+                    font-size: 15px;
+                    padding-bottom: 10px;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    letter-spacing: $letter-spacing;
+                    position: relative;
+                    transition: 0.2s all ease-out;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 3px;
+                        background-color: white;
+                        border-radius: 20px;
+                        transform: scale(0);
+                        transform-origin: center;
+                        transition: inherit;
+                    }
+                    &.active,
+                    &:hover {
+                        color: white;
+                        &::after {
+                            transform: scale(1);
+                        }
+                    }
+                }
+            }
+            h2 {
+                margin: 32px 0;
+                color: white;
+                text-transform: uppercase;
+                font-size: 56px;
+                letter-spacing: $letter-spacing + 2px;
+            }
+            hr {
+                margin: 40px;
+                border-width: 0.5px;
+                border-color: rgba(255, 255, 255, 0.2);
+                margin-left: 0;
+                margin-right: 0;
+            }
+            > div {
+                @include lg {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .calcs {
+                    margin-bottom: 30px;
+                    @include lg {
+                        text-align: center;
+                    }
+                    p {
+                        color: $secondColor;
+                        margin-bottom: 5px;
+                        font-size: 14px;
+                        letter-spacing: $letter-spacing;
+                    }
+                    h3 {
+                        color: white;
+                        font-weight: 300;
+                        font-size: 28px;
+                    }
+                }
+            }
+        }
+    }
+}
+// End Destination
+// Start Crew
+.crew {
+    background-image: url(../../images/crew/background-crew-mobile.jpg);
+    @include md {
+        background-image: url(../../images/crew/background-crew-tablet.jpg);
+    }
+    @include lg {
+        background-image: url(../../images/crew/background-crew-desktop.jpg);
+        padding-bottom: 0;
+    }
+
+    .container {
+        @include md {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row-reverse;
+            height: 100%;
+            > * {
+                height: inherit;
+            }
+        }
+        @include lg {
+            gap: 50px;
+        }
+        .slider {
+            @include md {
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                .img {
+                    padding: 0 35px;
+                }
+            }
+            @include lg {
+                justify-content: flex-end;
+                .slider-container {
+                    align-items: flex-end;
+                }
+                .img {
+                    padding: 0 10px;
+                }
+            }
+            @include xl {
+                .img {
+                    padding: 0 0px 0 130px;
+                }
+            }
+            .img {
+                animation: initial;
+            }
+            .slider-heading {
+                @include md {
+                    display: none;
+                }
+            }
+        }
+        .information {
+            position: relative;
+            margin-top: 30px;
+            text-align: center;
+            @include md {
+                text-align: left;
+                margin-top: 0px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 50%;
+                > * {
+                    order: 1;
+                }
+            }
+            .slider-heading {
+                @extend %slider-heading;
+                display: none;
+                @include md {
+                    display: block;
+                    margin-bottom: 0px;
+                }
+                @include lg {
+                    font-size: 22px;
+                }
+            }
+
+            .slider-controls {
+                display: flex;
+                width: fit-content;
+                gap: 20px;
+                margin: 0 auto;
+                @include md {
+                    margin: initial;
+                    order: 5;
+                }
+                li {
+                    width: 15px;
+                    height: 15px;
+                    background: white;
+                    border-radius: 50%;
+                    opacity: 0.4;
+                    transition: 0.3s all ease-out;
+                    cursor: pointer;
+                    &.active,
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+            .main {
+                h4 {
+                    color: white;
+                    opacity: 0.5;
+                    margin-top: 32px;
+                    text-transform: uppercase;
+                    letter-spacing: $letter-spacing;
+                    @include md {
+                        margin-top: 0px;
+                    }
+                    @include lg {
+                        font-size: 22px;
+                    }
+                }
+                h2 {
+                    margin: 12px 0 32px;
+                    color: white;
+                    text-transform: uppercase;
+                    font-size: 24px;
+                    letter-spacing: $letter-spacing;
+                    @include lg {
+                        font-size: 32px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// End crew
+// Start technology
+.technology {
+    background-image: url(../../images/technology/background-technology-mobile.jpg);
+    @include md {
+        background-image: url(../../images/technology/background-technology-tablet.jpg);
+    }
+    @include lg {
+        background-image: url(../../images/technology/background-technology-desktop.jpg);
+    }
+    .container {
+        @include md {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row-reverse;
+            height: 100%;
+            padding: 50px 12px;
+            > * {
+                height: inherit;
+            }
+        }
+        @include lg {
+            gap: 50px;
+        }
+        .slider {
+            @include md {
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+            }
+            @include lg {
+                justify-content: flex-end;
+                .slider-container {
+                    align-items: flex-end;
+                }
+            }
+
+            .img {
+                animation: initial;
+                padding: 0 0px;
+            }
+            .slider-heading {
+                @include md {
+                    display: none;
+                }
+            }
+        }
+        .information {
+            position: relative;
+            margin-top: 30px;
+            text-align: center;
+            @include md {
+                text-align: left;
+                margin-top: 0px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 50%;
+                > * {
+                    order: 1;
+                }
+            }
+            .slider-heading {
+                @extend %slider-heading;
+                display: none;
+                @include md {
+                    margin-bottom: 0px;
+                    display: block;
+                }
+                @include lg {
+                    font-size: 22px;
+                }
+            }
+
+            .main {
+                @include md{
+                    display: flex;
+                    align-items: center;
+                    gap: 50px;
+                }
+                .slider-controls {
+                    display: flex;
+                    width: fit-content;
+                    gap: 20px;
+                    margin: 0 auto;
+                    @include md{
+                        margin:initial;
+                        flex-direction: column;
+                    }
+                    li {
+                        width: 60px;
+                        height: 60px;
+                        border: 2px solid rgba(#fff,.3);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #fff;
+                        font-size: 30px;
+                        border-radius: 50%;
+                        transition: 0.3s all ease-out;
+                        cursor: pointer;
+                        &:hover {
+                            border-color: #fff;
+                        }
+                        &.active{
+                            border-color: #fff;
+                            background-color: white;
+                            color: $mainColor;
+                        }
+                    }
+                }
+
+                .text{
+                    h4 {
+                        color: white;
+                        opacity: 0.5;
+                        margin-top: 32px;
+                        text-transform: uppercase;
+                        letter-spacing: $letter-spacing;
+                        font-size: 14px;
+                        @include md {
+                            margin-top: 0px;
+                        }
+                        @include lg {
+                            font-size: 22px;
+                        }
+                    }
+                    h2 {
+                        margin: 12px 0 32px;
+                        color: white;
+                        text-transform: uppercase;
+                        font-size: 24px;
+                        letter-spacing: $letter-spacing;
+                        @include lg {
+                            font-size: 32px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// End technology

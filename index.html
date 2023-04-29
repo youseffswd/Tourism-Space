@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Space Tourism</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"
+            integrity="sha512-cOH8ndwGgPo+K7pTvMrqYbmI8u8k6Sho3js0gOqVWTmQMlLIi6TbqGWRTpf1ga8ci9H3iPsvDLr4X7xwhC/+DQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+            defer
+        ></script>
+        <script src="./assets/scripts/main.js" defer></script>
+    </head>
+    <body>
+        <!-- Start Loader -->
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <!-- End Loader -->
+        <!-- Start Header -->
+        <header>
+            <div class="logo">
+                <img src="./images/shared/logo.svg" alt="logo" />
+            </div>
+            <div class="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <hr />
+            <nav>
+                <ul>
+                    <li class="active"><span>00</span>Home</li>
+                    <li><span>01</span>destination</li>
+                    <li><span>02</span>crew</li>
+                    <li><span>03</span>technology</li>
+                </ul>
+            </nav>
+        </header>
+        <!-- End Header -->
+        <main>
+            <!-- Start Home -->
+            <section class="home">
+                <div class="container">
+                    <div class="heading">
+                        <span class="sub-heading">
+                            SO, YOU WANT TO TRAVEL TO
+                        </span>
+                        <h1>SPACE</h1>
+                        <p>
+                            Let’s face it; if you want to go to space, you might
+                            as well genuinely go to outer space and not hover
+                            kind of on the edge of it. Well sit back, and relax
+                            because we’ll give you a truly out of this world
+                            experience!
+                        </p>
+                    </div>
+                    <div class="explore">
+                        <button>EXPLORE</button>
+                    </div>
+                </div>
+            </section>
+            <!-- End Home -->
+            <!-- Start Destination -->
+            <section class="destination">
+                <div class="container">
+                    <div class="slider">
+                        <p class="slider-heading">
+                            <span>01</span> PICK YOUR DESTINATION
+                        </p>
+                        <div class="slider-container">
+                            <div class="img active">
+                                <img
+                                    src="./images/destination/image-moon.webp"
+                                    alt="moon"
+                                />
+                            </div>
+                            <div class="img">
+                                <img
+                                    src="./images/destination/image-mars.webp"
+                                    alt="mars"
+                                />
+                            </div>
+                            <div class="img">
+                                <img
+                                    src="./images/destination/image-europa.webp"
+                                    alt="europa"
+                                />
+                            </div>
+                            <div class="img">
+                                <img
+                                    src="./images/destination/image-titan.webp"
+                                    alt="titan"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="information">
+                        <div class="change-content-loader">
+                            
+                        </div>
+                        <ul class="slider-controls">
+                            <li data-ind="0" class="active">moon</li>
+                            <li data-ind="1">mars</li>
+                            <li data-ind="2">europa</li>
+                            <li data-ind="3">titan</li>
+                        </ul>
+                        <h2 class="title">Moon</h2>
+                        <p class="description">
+                            See our planet as you’ve never seen it before. A
+                            perfect relaxing trip away to help regain
+                            perspective and come back refreshed. While you’re
+                            there, take in some history by visiting the Luna 2
+                            and Apollo 11 landing sites.
+                        </p>
+                        <hr>
+                        <div>
+                            <div class="distance calcs">
+                                <p>
+                                    AVG. DISTANCE
+                                </p>
+                                <h3>384,400 KM</h3>
+                            </div>
+                            <div class="time calcs">
+                                <p>
+                                    EST. TRAVEL TIME
+                                </p>
+                                <h3>3 DAYS</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Destination -->
+            <!-- Start Crew -->
+            <section class="crew">
+                <div class="container">
+                    <div class="slider">
+                        <p class="slider-heading">
+                            <span>02</span>  MEET YOUR CREW
+                        </p>
+                        <div class="slider-container">
+                            <div class="img active">
+                                <img
+                                src="./images/crew/image-douglas-hurley.webp"
+                                alt="moon"
+                                />
+                            </div>
+                            <div class="img">
+                                <img
+                                src="./images/crew/image-mark-shuttleworth.webp"
+                                alt="mars"
+                                />
+                            </div>
+                            <div class="img">
+                                <img
+                                src="./images/crew/image-victor-glover.webp"
+                                alt="europa"
+                                />
+                            </div>
+                            <div class="img">
+                                <img
+                                src="./images/crew/image-anousheh-ansari.webp"
+                                alt="titan"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="information">
+                        <div class="slider-heading">
+                            <span>02</span>  MEET YOUR CREW
+                        </div>
+                        <div class="change-content-loader">
+                            
+                        </div>
+                        <ul class="slider-controls">
+                            <li data-ind="0" class="active"></li>
+                            <li data-ind="1"></li>
+                            <li data-ind="2"></li>
+                            <li data-ind="3"></li>
+                        </ul>
+                        <div class="main">
+                            <h4 class="title">Commander</h4>
+                            <h2 class="name">DOUGLAS HURLEY</h2>
+                            <p class="description">
+                                Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.
+                            </p>
+                        </div>
+                </div>
+            </section>
+            <!-- Start Crew -->
+            <!-- Start Technology -->
+            <section class="technology">
+                <div class="container">
+                    <div class="slider">
+                        <p class="slider-heading">
+                            <span>03</span>  SPACE LAUNCH 101
+                        </p>
+                        <div class="slider-container">
+                            <div class="img active">
+                                <img
+                                src="./images/technology/image-launch-vehicle-portrait.jpg"
+                                alt="moon"
+                                />
+                            </div>
+                            <div class="img">
+                                <img
+                                src="./images/technology/image-spaceport-portrait.jpg"
+                                alt="mars"
+                                />
+                            </div>
+                            <div class="img">
+                                <img
+                                src="./images/technology/image-space-capsule-portrait.jpg"
+                                alt="europa"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="information">
+                        <div class="slider-heading">
+                            <span>03</span>  SPACE LAUNCH 101
+                        </div>
+                        <div class="change-content-loader">
+                            
+                        </div>
+                        <div class="main">
+                            <ul class="slider-controls">
+                                <li data-ind="0" class="active">1</li>
+                                <li data-ind="1">2
+                                </li>
+                                <li data-ind="2">3</li>
+                            </ul>
+                            <div class="text">
+                                <h4>THE TERMINOLOGY...</h4>
+                                <h2 class="title">DOUGLAS HURLEY</h2>
+                                <p class="description">
+                                    Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.
+                                </p>
+                            </div>
+                        </div>
+                </div>
+            </section>
+            <!-- End Technology -->
+        </main>
+    </body>
+</html>
