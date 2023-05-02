@@ -41,7 +41,9 @@ const navLinksHandler = e => {
         onComplete: () => {
             console.log(section[howTime])
             // window.scrollTo(0, howTime * window.visualViewport.height);
-            section[howTime].scrollIntoView()
+            section[howTime].scrollIntoView({
+                behavior:"instant"
+            })
             burgerMenu.classList.toggle("active");
             nav.classList.toggle("active");
             gsap.to(loaderDivs, {
