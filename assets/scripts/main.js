@@ -39,13 +39,14 @@ const navLinksHandler = e => {
         stagger: 0.025,
         ease: "power1.in",
         onComplete: () => {
-            // console.log(window.visualViewport.height,howTime)
+            console.log(section[howTime])
             // window.scrollTo(0, howTime * window.visualViewport.height);
             section[howTime].scrollIntoView()
             burgerMenu.classList.toggle("active");
             nav.classList.toggle("active");
             gsap.to(loaderDivs, {
                 x: "0%",
+                delay:0.1,
                 duration: 0.3,
                 stagger: 0.025,
                 ease: "power1.in",
