@@ -1,3 +1,7 @@
+const section = document.querySelectorAll("section");
+section.forEach(sec => {
+    sec.style.height = window.innerHeight + 'px'
+})
 const loaderDivs = document.querySelectorAll(".loader div");
 
 window.onbeforeunload = function () {
@@ -26,26 +30,20 @@ burgerMenu.addEventListener("click", burgerMenuHandler);
 
 const navLinksContainer = document.querySelector("nav ul");
 const navLinks = navLinksContainer.querySelectorAll("li");
-const section = document.querySelectorAll("section");
 let lastActiveNavLink = navLinks[0];
 
 const navLinksHandler = e => {
     if (e.target.tagName !== "LI" || lastActiveNavLink === e.target) return;
     lastActiveNavLink = swapActiveClasses(lastActiveNavLink, e.target);
     const howTime = parseInt(lastActiveNavLink.firstElementChild.textContent);
-    const windowHeight = window.innerHeight;
-    const viewportHeight = document.documentElement.clientHeight;
-    const addressBarHeight = windowHeight - viewportHeight;
+
     gsap.to(loaderDivs, {
         x: "-100%",
         duration: 0.3,
         stagger: 0.025,
         ease: "power1.in",
         onComplete: () => {
-            console.log(addressBarHeight)
-            document.querySelector("main").style.transform = `translateY(-${
-                (howTime * innerHeight) + addressBarHeight
-            }px)`;
+            section[howTime].scrollIntoView()
             burgerMenu.classList.toggle("active");
             nav.classList.toggle("active");
             gsap.to(loaderDivs, {
