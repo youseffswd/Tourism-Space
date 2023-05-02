@@ -26,6 +26,7 @@ burgerMenu.addEventListener("click", burgerMenuHandler);
 
 const navLinksContainer = document.querySelector("nav ul");
 const navLinks = navLinksContainer.querySelectorAll("li");
+const section = document.querySelectorAll("section")
 let lastActiveNavLink = navLinks[0];
 
 const navLinksHandler = e => {
@@ -38,8 +39,9 @@ const navLinksHandler = e => {
         stagger: 0.025,
         ease: "power1.in",
         onComplete: () => {
-            console.log(window.visualViewport.height,howTime)
-            window.scrollTo(0, howTime * window.visualViewport.height);
+            // console.log(window.visualViewport.height,howTime)
+            // window.scrollTo(0, howTime * window.visualViewport.height);
+            section[howTime].scrollIntoView()
             burgerMenu.classList.toggle("active");
             nav.classList.toggle("active");
             gsap.to(loaderDivs, {
