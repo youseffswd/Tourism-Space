@@ -26,30 +26,31 @@ burgerMenu.addEventListener("click", burgerMenuHandler);
 
 const navLinksContainer = document.querySelector("nav ul");
 const navLinks = navLinksContainer.querySelectorAll("li");
-const section = document.querySelectorAll("section")
+const section = document.querySelectorAll("section");
 let lastActiveNavLink = navLinks[0];
 
 const navLinksHandler = e => {
     if (e.target.tagName !== "LI" || lastActiveNavLink === e.target) return;
     lastActiveNavLink = swapActiveClasses(lastActiveNavLink, e.target);
     const howTime = parseInt(lastActiveNavLink.firstElementChild.textContent);
+    const windowHeight = window.innerHeight;
+    const viewportHeight = document.documentElement.clientHeight;
+    const addressBarHeight = windowHeight - viewportHeight;
     gsap.to(loaderDivs, {
         x: "-100%",
         duration: 0.3,
         stagger: 0.025,
         ease: "power1.in",
         onComplete: () => {
-            console.log(section[howTime])
-            // window.scrollTo(0, howTime * window.visualViewport.height);
-            // section[howTime].scrollIntoView({
-            //     behavior:"instant"
-            // })
-            document.querySelector("main").style.transform = `translateY(-${howTime * innerHeight}px)`
+            console.log(addressBarHeight)
+            document.querySelector("main").style.transform = `translateY(-${
+                (howTime * innerHeight) + addressBarHeight
+            }px)`;
             burgerMenu.classList.toggle("active");
             nav.classList.toggle("active");
             gsap.to(loaderDivs, {
                 x: "0%",
-                delay:0.1,
+                delay: 0.1,
                 duration: 0.3,
                 stagger: 0.025,
                 ease: "power1.in",
@@ -57,7 +58,7 @@ const navLinksHandler = e => {
         },
     });
 };
-console.log(window.visualViewport.height)
+console.log(window.visualViewport.height);
 navLinksContainer.addEventListener("click", navLinksHandler);
 
 // Explore
@@ -148,11 +149,7 @@ const data = {
     ],
 };
 
-
-
-const setWidthForItems = (width,slides) => {
-
-}
+const setWidthForItems = (width, slides) => {};
 
 const changeContent = (sliderContainer, ind) => {
     const section = sliderContainer.closest("section");
@@ -175,15 +172,14 @@ const changeContent = (sliderContainer, ind) => {
     }
 };
 
-
 const initilizeSlider = sliderContainer => {
     const sliderControlsContainer = sliderContainer
         .closest(".container")
         .querySelector(".slider-controls");
-    
-    const {childElementCount} = sliderContainer 
-    sliderContainer.style.width = `${childElementCount * 100}%`
-    
+
+    const { childElementCount } = sliderContainer;
+    sliderContainer.style.width = `${childElementCount * 100}%`;
+
     const slides = sliderContainer.querySelectorAll(".img");
     let lastActiveSlide = slides[0];
     let lastActiveLink = sliderControlsContainer.firstElementChild;
@@ -210,13 +206,13 @@ const initilizeSlider = sliderContainer => {
                 });
             },
         });
-        sliderContainer.style.transform = `translate(-${targetSlideInd * (100 / childElementCount)}%)`;
+        sliderContainer.style.transform = `translate(-${
+            targetSlideInd * (100 / childElementCount)
+        }%)`;
     };
 
     sliderControlsContainer.addEventListener("click", sliderHandler);
 };
-
-
 
 sliderContainers.forEach(sliderContainer => {
     initilizeSlider(sliderContainer);
