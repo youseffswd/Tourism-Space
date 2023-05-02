@@ -38,6 +38,7 @@ const navLinksHandler = e => {
         stagger: 0.025,
         ease: "power1.in",
         onComplete: () => {
+            console.log(innerHeight,howTime)
             window.scrollTo(0, howTime * innerHeight);
             burgerMenu.classList.toggle("active");
             nav.classList.toggle("active");
@@ -50,7 +51,7 @@ const navLinksHandler = e => {
         },
     });
 };
-
+console.log(window.innerHeight)
 navLinksContainer.addEventListener("click", navLinksHandler);
 
 // Explore

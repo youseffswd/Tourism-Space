@@ -451,6 +451,7 @@ header {
         margin: 0 auto;
         @include md {
             margin: initial;
+            font-size: 18px;
         }
     }
 }
