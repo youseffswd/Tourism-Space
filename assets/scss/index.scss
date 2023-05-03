@@ -40,7 +40,9 @@ $letter-spacing: 2.5px;
     padding: 0;
     box-sizing: border-box;
 }
-
+html{
+    overflow: hidden;
+}
 body {
     font-family: "Barlow Condensed", sans-serif;
     overflow: hidden;

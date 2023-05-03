@@ -43,7 +43,8 @@ const navLinksHandler = e => {
         stagger: 0.025,
         ease: "power1.in",
         onComplete: () => {
-            section[howTime].scrollIntoView()
+            // section[howTime].scrollIntoView()
+            window.scrollTo(0 ,howTime * innerHeight)
             burgerMenu.classList.toggle("active");
             nav.classList.toggle("active");
             gsap.to(loaderDivs, {
@@ -56,7 +57,7 @@ const navLinksHandler = e => {
         },
     });
 };
-console.log(window.visualViewport.height);
+console.log(innerHeight);
 navLinksContainer.addEventListener("click", navLinksHandler);
 
 // Explore
