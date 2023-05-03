@@ -1,7 +1,4 @@
-const section = document.querySelectorAll("section");
-section.forEach(sec => {
-    sec.style.height = window.innerHeight + 'px'
-})
+
 const loaderDivs = document.querySelectorAll(".loader div");
 
 window.onbeforeunload = function () {
@@ -32,6 +29,12 @@ const navLinksContainer = document.querySelector("nav ul");
 const navLinks = navLinksContainer.querySelectorAll("li");
 let lastActiveNavLink = navLinks[0];
 
+const section = document.querySelectorAll("section");
+section.forEach(sec => {
+    sec.style.height = window.innerHeight + 'px'
+})
+
+
 const navLinksHandler = e => {
     if (e.target.tagName !== "LI" || lastActiveNavLink === e.target) return;
     lastActiveNavLink = swapActiveClasses(lastActiveNavLink, e.target);
@@ -40,10 +43,9 @@ const navLinksHandler = e => {
     gsap.to(loaderDivs, {
         x: "-100%",
         duration: 0.3,
-        stagger: 0.025,
+        stagger: 0.05,
         ease: "power1.in",
         onComplete: () => {
-            // section[howTime].scrollIntoView()
             window.scrollTo(0 ,howTime * innerHeight)
             burgerMenu.classList.toggle("active");
             nav.classList.toggle("active");
@@ -51,13 +53,12 @@ const navLinksHandler = e => {
                 x: "0%",
                 delay: 0.1,
                 duration: 0.3,
-                stagger: 0.025,
+                stagger: 0.05,
                 ease: "power1.in",
             });
         },
     });
 };
-console.log(innerHeight);
 navLinksContainer.addEventListener("click", navLinksHandler);
 
 // Explore
